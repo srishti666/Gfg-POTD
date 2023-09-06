@@ -1,0 +1,42 @@
+Question Link: https://practice.geeksforgeeks.org/problems/mother-vertex/1
+
+Solution:
+
+class Solution
+{
+    static void Dfs(ArrayList<ArrayList<Integer>>adj, int curr, boolean vis[]){
+        vis[curr]=true;
+        for(int x:adj.get(curr)){
+            if(!vis[x]){
+                Dfs(adj,x,vis);
+            }
+        }
+    }
+
+
+    //Function to find a Mother Vertex in the Graph.
+    public int findMotherVertex(int V, ArrayList<ArrayList<Integer>>adj)
+    {
+       boolean []vis=new boolean [V];
+       
+       int v=-1;
+       for(int i=0;i<V;i++){
+         if(!vis[i]){
+                Dfs(adj,i,vis);
+                v=i;
+            }
+       }
+       
+       
+        boolean []check=new boolean [V];
+        Dfs(adj,v,check);
+    
+    for(boolean val:check){
+        if(!val){
+            return -1;
+        }
+    }
+     return v;
+    
+  }
+}

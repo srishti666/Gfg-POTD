@@ -1,1 +1,27 @@
 Question link: https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
+
+Solution
+
+class Solution
+{
+    // return the Kth largest element in the given BST rooted at 'root'
+    static void helper(Node root, ArrayList<Integer>list){
+        if(root==null){
+            return;
+        }
+        list.add(root.data);
+        helper(root.left,list);
+        helper(root.right,list);
+        
+    }
+    public int kthLargest(Node root,int K)
+    {
+        //Your code here
+        ArrayList<Integer>list= new ArrayList<>();
+        helper(root,list);
+        Collections.sort(list);
+        
+        return list.get(list.size()-K);
+        
+    }
+}

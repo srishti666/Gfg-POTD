@@ -1,1 +1,23 @@
 Question link: https://practice.geeksforgeeks.org/problems/lucky-numbers2911/1
+Solution:
+class Solution
+{
+
+    public static boolean slove(int n,int k)
+    {
+         if(n%k==0)
+        {
+            return false;
+        }
+        if(k>n)
+        {
+            return true;
+        }
+       return slove((n-n/k),k+1);
+    }
+    public static boolean isLucky(int n)
+    {
+        // Your code here
+        return slove(n,2);
+    }
+}

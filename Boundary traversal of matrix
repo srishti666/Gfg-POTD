@@ -1,1 +1,43 @@
 Question link: https://practice.geeksforgeeks.org/problems/boundary-traversal-of-matrix-1587115620/1
+Solution:
+class Solution
+{
+
+    static ArrayList<Integer> boundaryTraversal(int mt[][], int n, int m)
+    {
+         ArrayList<Integer> ans = new ArrayList<>();
+         
+         //first-row
+         for(int i=0;i<mt[0].length;i++){
+             ans.add(mt[0][i]);
+             mt[0][i] = -1;
+         }
+         
+         //last column
+         for(int i=0;i<n;i++){
+             if(mt[i][m-1] != -1){
+                 ans.add(mt[i][m-1]);
+                 mt[i][m-1] = -1;
+             }
+         }
+         
+         //last row
+         for(int i=m-1;i>=0;i--){
+             if(mt[n-1][i] != -1){
+                 ans.add(mt[n-1][i]);
+                 mt[n-1][i] = -1;
+             }
+         }
+         
+         //first column 
+         for(int i=n-1;i>=0;i--){
+             if(mt[i][0] != -1){
+                 ans.add(mt[i][0]);
+                 mt[i][0] = -1;
+             }
+         }
+         
+         return ans;
+         
+    }
+}
